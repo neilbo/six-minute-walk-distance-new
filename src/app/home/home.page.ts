@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { ValidationService } from '../validation.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,10 @@ export class HomePage {
 
   constructor(public formBuilder: FormBuilder) {
     this.metricForm = this.formBuilder.group({
-      cm: [''],
-      kg: [''],
-      age: [''],
-      gender: ['']
+      cm: ['', ValidationService.cmRequired],
+      kg: ['', ValidationService.kgRequired],
+      age: ['', [ValidationService.ageRequired, ValidationService.ageValidate]],
+      gender: ['', ValidationService.genderRequired]
     });
 
     this.onFormChange();

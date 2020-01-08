@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    ComponentsModule,
     RouterModule.forChild([
       {
         path: '',
