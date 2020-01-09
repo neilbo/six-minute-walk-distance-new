@@ -12,17 +12,24 @@ import { ValidationService } from 'src/app/validation.service';
 })
 export class ValidationErrorComponent implements OnInit {
   @Input() control: FormControl;
+  @Input() fieldName: string;
 
   constructor() { }
 
   ngOnInit() { }
 
   get errorMessage() {
-    console.log('this.control', this.control);
     for (let propertyName in this.control.errors) {
-      console.log('propertyName', propertyName);
-      if (this.control.errors.hasOwnProperty(propertyName) && this.control.touched) {
-        return ValidationService.getValidatorErrorMessage(propertyName, this.control.errors[propertyName], this.control);
+      if (
+        this.control.errors.hasOwnProperty(propertyName) &&
+        this.control.touched
+      ) {
+        let message = ValidationService.getValidatorErrorMessage(
+          propertyName,
+          this.fieldName,
+          this.control.errors[propertyName],
+        );
+        return `${message}`
       }
     }
     return null;

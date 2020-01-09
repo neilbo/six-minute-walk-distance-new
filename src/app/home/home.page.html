@@ -10,7 +10,8 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="metricForm" (change)="showResults()">
+  <!-- <form [formGroup]="metricForm" (change)="showResults()"> -->
+  <form [formGroup]="metricForm">
     <ion-radio-group formControlName="gender">
       <ion-list-header>
         Gender
@@ -37,21 +38,21 @@
               <ion-label position="stacked">Height (cm)</ion-label>
               <ion-input type="number" min="1" formControlName="cm"></ion-input>
             </ion-item>
-            <validation-error [control]="metricForm.controls.cm"></validation-error>
+            <validation-error [control]="metricForm.controls.cm" [fieldName]="'Height'"></validation-error>
           </ion-col>
           <ion-col size="12">
             <ion-item>
               <ion-label position="stacked">Weight (kg)</ion-label>
               <ion-input type="number" min="1" formControlName="kg"></ion-input>
             </ion-item>
-            <validation-error [control]="metricForm.controls.kg"></validation-error>
+            <validation-error [control]="metricForm.controls.kg" [fieldName]="'Weight'"></validation-error>
           </ion-col>
           <ion-col size="12">
             <ion-item>
               <ion-label position="stacked">Age (years)</ion-label>
               <ion-input type="number" min="18" formControlName="age"></ion-input>
             </ion-item>
-            <validation-error [control]="metricForm.controls.age"></validation-error>
+            <validation-error [control]="metricForm.controls.age" [fieldName]="'Age'"></validation-error>
 
           </ion-col>
         </ion-row>

@@ -13,14 +13,12 @@ export class HomePage {
 
   constructor(public formBuilder: FormBuilder) {
     this.metricForm = this.formBuilder.group({
-      cm: ['', ValidationService.cmRequired],
-      kg: ['', ValidationService.kgRequired],
-      age: ['', [ValidationService.ageRequired, ValidationService.ageValidate]],
-      gender: ['', ValidationService.genderRequired]
+      cm: ['', ValidationService.isRequired],
+      kg: ['', ValidationService.isRequired],
+      age: ['', [ValidationService.isRequired]],
+      gender: ['', ValidationService.isRequired]
     });
-
-    this.onFormChange();
-
+    // this.onFormChange();
   }
 
   showResults() {
