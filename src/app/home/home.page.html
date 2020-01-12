@@ -10,34 +10,13 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="metricForm" (change)="showResults()">
-    <!-- <form [formGroup]="metricForm"> -->
-    <ion-grid>
-      <ion-radio-group formControlName="gender">
-        <ion-row>
-          <ion-col size="6">
-            <ion-item class="radio">
-              <ion-label>Male</ion-label>
-              <ion-radio value="male"></ion-radio>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item class="radio">
-              <ion-label>Female</ion-label>
-              <ion-radio value="female"></ion-radio>
-            </ion-item>
-          </ion-col>
-          <validation-error
-            [control]="metricForm.controls.gender"
-          ></validation-error>
-        </ion-row>
-      </ion-radio-group>
-
+  <ion-grid>
+    <form [formGroup]="metricForm" (change)="onFormChange()">
       <ion-row>
         <ion-col size="12">
           <ion-item>
             <ion-label position="stacked">Height (cm)</ion-label>
-            <ion-input type="tel" min="1" formControlName="cm"></ion-input>
+            <ion-input type="tel" min="1" formControlName="cm" #height></ion-input>
           </ion-item>
           <validation-error
             [control]="metricForm.controls.cm"
@@ -65,7 +44,38 @@
           ></validation-error>
         </ion-col>
       </ion-row>
-    </ion-grid>
-  </form>
-  <div *ngIf="!isFormEmpty()">{{getDistance()}}</div>
+      <ion-radio-group formControlName="gender">
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="radio">
+              <ion-label>Male</ion-label>
+              <ion-radio value="male"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="radio">
+              <ion-label>Female</ion-label>
+              <ion-radio value="female"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <validation-error
+            [control]="metricForm.controls.gender"
+          ></validation-error>
+        </ion-row>
+      </ion-radio-group>
+    </form>
+    <ion-row>
+      <ion-col size="12">
+        <div *ngIf="!isFormEmpty()" class="result">
+          <p>{{getDistance() + "m"}}</p>
+          <ion-button type="button" (click)="resetForm()"
+            >Copy to Clipboard & Reset</ion-button
+          >
+        </div>
+        <div *ngIf="isFormEmpty()" class="empty-message">
+          Complete the form to see your predicted distance
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
