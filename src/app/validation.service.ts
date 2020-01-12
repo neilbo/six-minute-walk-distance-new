@@ -24,7 +24,6 @@ export type ValidationResult = { [I in ValidationErrors]?: any } | null;
 export type Validator = (control: AbstractControl) => ValidationResult;
 
 export class ValidationService {
-  
   static getValidatorErrorMessage(
     validatorName: string,
     fieldName: string,
@@ -59,11 +58,8 @@ export class ValidationService {
 
   static creditCardValidator(control) {
     // Visa, MasterCard, American Express, Diners Club, Discover, JCB
-    if (
-      control.value.match(
-        /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/
-      )
-    ) {
+    const validCreditCard: RegExp = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+    if (control.value.match(validCreditCard)) {
       return null;
     } else {
       return { invalidCreditCard: true };
@@ -72,11 +68,8 @@ export class ValidationService {
 
   static emailValidator(control) {
     // RFC 2822 compliant regex
-    if (
-      control.value.match(
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-      )
-    ) {
+    const validEmail: RegExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    if (control.value.match(validEmail)) {
       return null;
     } else {
       return { invalidEmailAddress: true };
