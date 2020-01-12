@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from '../validation.service';
+import isEmpty from "lodash/isEmpty";
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,6 @@ export class HomePage {
   }
   resetForm() {
     this.metricForm.reset()
-
   }
 
   onFormChange() {
@@ -46,6 +46,13 @@ export class HomePage {
           this.hideResults();
         }
       });
+  }
+
+  isFormEmpty(): boolean {
+    return isEmpty(this.metricForm.controls.cm.value) ||
+      isEmpty(this.metricForm.controls.age.value) ||
+      isEmpty(this.metricForm.controls.kg.value) ||
+      isEmpty(this.metricForm.controls.gender.value);
   }
 
 }
