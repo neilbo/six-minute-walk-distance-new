@@ -4,8 +4,8 @@
 Ionic Project (Angular). Intent to be a Web app.
 
 ## What you need
-- NodeJS
-- Ionic@4
+- [NodeJS](https://nodejs.org/)
+- [Ionic@4](https://ionicframework.com/)
 
 ## Build && Deploy
 Build with
