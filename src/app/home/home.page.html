@@ -10,7 +10,56 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
+  <!-- <form [formGroup]="metricForm" (change)="showResults()"> -->
+  <form [formGroup]="metricForm">
+    <ion-radio-group formControlName="gender">
+      <ion-list-header>
+        Gender
+      </ion-list-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item class="radio">
+              <ion-label>Male</ion-label>
+              <ion-radio value="M"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item class="radio">
+              <ion-label>Female</ion-label>
+              <ion-radio value="Female"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <validation-error [control]="metricForm.controls.gender"></validation-error>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="stacked">Height (cm)</ion-label>
+              <ion-input type="number" min="1" formControlName="cm"></ion-input>
+            </ion-item>
+            <validation-error [control]="metricForm.controls.cm" [fieldName]="'Height'"></validation-error>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="stacked">Weight (kg)</ion-label>
+              <ion-input type="number" min="1" formControlName="kg"></ion-input>
+            </ion-item>
+            <validation-error [control]="metricForm.controls.kg" [fieldName]="'Weight'"></validation-error>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="stacked">Age (years)</ion-label>
+              <ion-input type="number" min="18" formControlName="age"></ion-input>
+            </ion-item>
+            <validation-error [control]="metricForm.controls.age" [fieldName]="'Age'"></validation-error>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-radio-group>
+  </form>
+  <!-- <ion-card class="welcome-card">
     <img src="/assets/shapes.svg" alt=""/>
     <ion-card-header>
       <ion-card-subtitle>Get Started</ion-card-subtitle>
@@ -44,5 +93,5 @@
       <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
       <ion-label>Theme Your App</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>
