@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({mode: 'ios'}),
     AppRoutingModule
   ],
   providers: [
