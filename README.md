@@ -12,7 +12,7 @@ Build with
 ```
 ionic build --prod
 ```
-Deplyed via Netlify: Just push from master branch to deploy changes
+Deployed via Netlify: Just push from master branch to deploy changes
 ```
 git push
 ```
