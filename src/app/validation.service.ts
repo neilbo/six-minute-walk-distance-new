@@ -1,8 +1,9 @@
-import * as _ from "lodash";
+import isEmpty from "lodash/isEmpty";
+import isNumber from "lodash/isNumber";
 import { AbstractControl } from "@angular/forms";
 
 export enum ValidationErrors {
-  REQUIRED = "required"
+  REQUIRED = "required",
   // INVALID_EMAIL_ADDRESS = "invalidEmailAddress",
   // INVALID_PASSWORD = "invalidPassword",
   // INVALID_AUS_PHONE = "invalidAusPhone",
@@ -11,7 +12,7 @@ export enum ValidationErrors {
   // DATE_NOT_IN_FUTURE = "dateNotInFuture",
   // INVALID_DAILY_OCCURRENCE = "medicineDailyOccurrence",
   // WHOLE_NUMBER = "wholeNumber",
-  // GREATER_THAN = "greaterThan",
+  GREATER_THAN = "greaterThan",
   // LESS_THAN = "lessThan",
   // INVALID_SYSTOLIC = "invalidSystolic",
   // INVALID_DIASTOLIC = "invalidDiastolic",
@@ -30,7 +31,7 @@ export class ValidationService {
     validatorValue?: any
   ) {
     const config: ValidationMessages = {
-      required: `${fieldName} is required`
+      required: `${fieldName} is required`,
       // invalidEmailAddress: `${fieldName} is not formatted correctly`,
       // invalidPassword:
       //   "Password must be at least 8 characters long, and contain a number", // TODO: Probably won't use password field
@@ -39,7 +40,7 @@ export class ValidationService {
       // invalidSystolic: `${fieldName} must be between ${SYSTOLIC_LOWER_LIMIT} and ${SYSTOLIC_UPPER_LIMIT}`,
       // invalidDiastolic: `${fieldName} must be between ${DIASTOLIC_LOWER_LIMIT} and ${DIASTOLIC_UPPER_LIMIT}`,
       // invalidHeartRate: `${fieldName} must be between ${HEART_RATE_LOWER_LIMIT} and ${HEART_RATE_UPPER_LIMIT}`,
-      // greaterThan: `${fieldName} must be more than ${validatorValue}`,
+      greaterThan: `${fieldName} must be more than ${validatorValue}`,
       // lessThan: `${fieldName} must be less than ${validatorValue}`
     };
 
@@ -48,9 +49,7 @@ export class ValidationService {
 
   static isRequired(control: AbstractControl): ValidationResult {
     const val = control.value;
-
-    if (!_.isNumber(val) && val !== true && _.isEmpty(val)) {
-      // return { required: true };
+    if (!isNumber(val) && val !== true && isEmpty(val)) {
       return { [ValidationErrors.REQUIRED]: true };
     }
     return null;
@@ -108,5 +107,15 @@ export class ValidationService {
     } else {
       return null;
     }
+  }
+
+  static isGreaterThan(limit: number): Validator {
+    return (control: AbstractControl) => {
+      if (control.value > limit) {
+        return null;
+      }
+
+      return { [ValidationErrors.GREATER_THAN]: limit };
+    };
   }
 }

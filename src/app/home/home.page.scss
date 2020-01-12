@@ -3,14 +3,14 @@
   overflow: hidden;
 }
 
+ion-item {
+  .item-native {
+    padding: 0;
+  }
+}
+
 ion-input {
   --background: var(--color-white);
   border-radius: 4px;
   padding: 0 4px !important;
-}
-
-ion-radio-group {
-  ion-label {
-    --background: var(--color-white);
-  }
 }
