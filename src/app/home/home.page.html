@@ -26,7 +26,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="stacked">Weight (kg)</ion-label>
-            <ion-input type="tel" min="1" formControlName="kg"></ion-input>
+            <ion-input type="tel" min="1" formControlName="kg" inputmode="numeric" pattern="[0-9]*"></ion-input>
           </ion-item>
           <validation-error
             [control]="metricForm.controls.kg"
@@ -36,7 +36,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="stacked">Age (years)</ion-label>
-            <ion-input type="tel" min="18" formControlName="age"></ion-input>
+            <ion-input type="tel" min="18" formControlName="age" inputmode="numeric" pattern="[0-9]*"></ion-input>
           </ion-item>
           <validation-error
             [control]="metricForm.controls.age"
