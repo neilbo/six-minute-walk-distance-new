@@ -31,16 +31,25 @@ ion-content {
 
 form {
   ion-item {
+    --padding-end: 0px;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    --inner-padding-start: 0px;
     --background: var(--ion-color-light);
     --border-color: var(--ion-color-light);
-    margin-right: 4px;
+
+    &.radio {
+      --background: var(--color-white);
+      --padding-start: 8px;
+      --padding-end: 8px;
+      --border-radius: 4px;
+    }
   }
 }
 
 .form-error {
-    color: var(--ion-color-danger);
+  color: var(--ion-color-danger);
 }
-
-ion-item.radio {
-  --background: var(--color-white);
+ion-button {
+  --border-radius: 30px;
 }
