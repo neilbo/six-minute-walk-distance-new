@@ -50,3 +50,6 @@ form {
 .form-error {
   color: var(--ion-color-danger);
 }
+ion-button {
+  --border-radius: 30px;
+}

@@ -13,6 +13,7 @@ import copyToClipboard from "../utils/copy-to-clipboard";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage implements OnInit {
+  title: string = `Predicted Distance`;
   @ViewChild("height", { static: false }) height: IonInput;
   metricForm: FormGroup;
   constructor(
