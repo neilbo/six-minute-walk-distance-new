@@ -37,16 +37,12 @@ export class HomePage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.focusOnInput();
   }
 
-  showResults() {
-    return !this.isFormEmpty() ? this.showResults() : null;
-  }
-
-  getDistance() {
-    return this.calculateDistance.enrightForumla(
+  getDistance(): number {
+    return +this.calculateDistance.enrightForumla(
       this.metricForm.controls.cm.value,
       this.metricForm.controls.kg.value,
       this.metricForm.controls.age.value,
@@ -54,18 +50,16 @@ export class HomePage implements OnInit {
     );
   }
 
-  resetForm() {
-    this.metricForm.reset();
-    this.copyToClipboard(this.getDistance());
-    this.focusOnInput();
-  }
-
-  onFormChange() {
-    this.metricForm.valueChanges.pipe(debounceTime(500)).subscribe(() => {
-      if (this.metricForm.valid && this.metricForm.dirty) {
-        this.getDistance();
-      }
-    });
+  onFormChange(): void {
+    try {
+      this.metricForm.valueChanges.pipe(debounceTime(500)).subscribe(() => {
+        if (this.metricForm.valid && this.metricForm.dirty) {
+          this.getDistance();
+        }
+      });
+    } catch (error) {
+      console.error(`Error getDistance ${error}`);
+    }
   }
 
   isFormEmpty(): boolean {
@@ -77,7 +71,7 @@ export class HomePage implements OnInit {
     );
   }
 
-  focusOnInput() {
+  focusOnInput(): void {
     setTimeout(() => {
       if (this.height) {
         this.height.setFocus();
@@ -87,12 +81,15 @@ export class HomePage implements OnInit {
 
   copyToClipboard(val: any) {
     copyToClipboard(val);
-    this.presentCopiedToast(val);
+    this.presentCopiedToast(val); 
+    this.metricForm.reset();
+    this.focusOnInput();
   }
 
   async presentCopiedToast(val?: any): Promise<void> {
+    // TODO :: Put this in ToastService
     const toast = await this.toastCtrl.create({
-      message: `  <ion-icon name="copy"></ion-icon> Copied ${val} to Clipboard!`,
+      message: `  <ion-icon name="copy"></ion-icon> Copied <strong>${val}</strong> to Clipboard!`,
       duration: 2500,
       cssClass: "toast-default",
       position: `middle`
