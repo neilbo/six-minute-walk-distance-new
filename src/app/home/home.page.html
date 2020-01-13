@@ -16,12 +16,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="stacked">Height (cm)</ion-label>
-            <ion-input
-              type="tel"
-              min="1"
-              formControlName="cm"
-              #height
-            ></ion-input>
+            <ion-input type="text" min="1" formControlName="cm" inputmode="numeric" pattern="[0-9]*" #height></ion-input>
           </ion-item>
           <validation-error
             [control]="metricForm.controls.cm"
@@ -54,13 +49,13 @@
           <ion-col size="6">
             <ion-item class="radio">
               <ion-label>Male</ion-label>
-              <ion-radio value="male" mode="md"></ion-radio>
+              <ion-radio value="male"  mode="md"></ion-radio>
             </ion-item>
           </ion-col>
           <ion-col size="6">
             <ion-item class="radio">
               <ion-label>Female</ion-label>
-              <ion-radio value="female" mode="md"></ion-radio>
+              <ion-radio value="female"  mode="md"></ion-radio>
             </ion-item>
           </ion-col>
           <validation-error
