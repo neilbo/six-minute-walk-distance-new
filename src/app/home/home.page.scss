@@ -14,14 +14,16 @@ ion-input {
   border-radius: 4px;
   padding: 0 4px !important;
 }
-
-.result {
+.result-container {
   text-align: center;
-  font-size: 2rem;
   p {
-    margin: 0;
+    margin: 4px 0;
+    &.result {
+      font-size: 2rem;
+    }
   }
 }
+
 .empty-message {
   text-align: center;
   font-size: 1.4rem;

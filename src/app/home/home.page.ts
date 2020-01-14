@@ -82,7 +82,7 @@ export class HomePage implements OnInit {
 
   copyToClipboard(val: any) {
     copyToClipboard(val);
-    this.presentCopiedToast(val); 
+    this.presentCopiedToast(val);
     this.metricForm.reset();
     this.focusOnInput();
   }
@@ -96,5 +96,13 @@ export class HomePage implements OnInit {
       position: `middle`
     });
     toast.present();
+  }
+
+  showResults(): boolean {
+    return !this.isFormEmpty() && this.metricForm.valid;
+  }
+
+  isNegativeDistance(): boolean {
+    return Math.sign(this.getDistance()) === -1;
   }
 }
