@@ -26,7 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-content {
-  --background: var(--ion-color-light);
+  --background: var(--color-lite);
 }
 
 form {
@@ -35,8 +35,8 @@ form {
     --padding-start: 0px;
     --inner-padding-end: 0px;
     --inner-padding-start: 0px;
-    --background: var(--ion-color-light);
-    --border-color: var(--ion-color-light);
+    --background: var(--color-lite);
+    --border-color: var(--color-lite);
 
     &.radio {
       --background: var(--color-white);
