@@ -53,3 +53,7 @@ form {
 ion-button {
   --border-radius: 30px;
 }
+ion-toast {
+  --background: var(--ion-color-dark);
+  --color: var(--color-white);
+}
