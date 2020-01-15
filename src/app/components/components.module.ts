@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ValidationErrorComponent } from './validation-error/validation-error.component';
-import { ImperialFormComponent } from '../imperial-form/imperial-form.component';
+import { ImperialFormComponent } from './imperial-form/imperial-form.component';
 import { MetricFormComponent } from './metric-form/metric-form.component';
 
 @NgModule({
