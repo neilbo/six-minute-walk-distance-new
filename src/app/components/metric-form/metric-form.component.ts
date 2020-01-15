@@ -4,22 +4,22 @@ import { debounceTime } from "rxjs/operators";
 import { ValidationService } from "../../validation.service";
 import isEmpty from "lodash/isEmpty";
 import { CalculateDistanceService } from "../../calculate-distance.service";
-import { IonInput, ToastController } from "@ionic/angular";
+import { IonInput } from "@ionic/angular";
 import copyToClipboard from "../../utils/copy-to-clipboard";
+import { ToastService } from "src/app/toast.service";
 
 @Component({
-  selector: 'metric-form',
-  templateUrl: './metric-form.component.html',
-  styleUrls: ['./metric-form.component.scss'],
+  selector: "metric-form",
+  templateUrl: "./metric-form.component.html",
+  styleUrls: ["./metric-form.component.scss"]
 })
 export class MetricFormComponent implements OnInit {
-
   @ViewChild("height", { static: false }) height: IonInput;
   metricForm: FormGroup;
   constructor(
     public formBuilder: FormBuilder,
     public calculateDistance: CalculateDistanceService,
-    public toastCtrl: ToastController
+    public toastService: ToastService
   ) {
     this.metricForm = this.formBuilder.group({
       cm: [
@@ -82,20 +82,9 @@ export class MetricFormComponent implements OnInit {
 
   copyToClipboard(val: any) {
     copyToClipboard(val);
-    this.presentCopiedToast(val);
+    this.toastService.presentCopiedToast(val);
     this.metricForm.reset();
     this.focusOnInput();
-  }
-
-  async presentCopiedToast(val?: any): Promise<void> {
-    // TODO :: Put this in ToastService
-    const toast = await this.toastCtrl.create({
-      message: `  <ion-icon name="copy"></ion-icon> Copied <strong>${val}</strong> to Clipboard!`,
-      duration: 2500,
-      cssClass: "toast-default",
-      position: `middle`
-    });
-    toast.present();
   }
 
   showResults(): boolean {
