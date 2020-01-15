@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ConversionService {
-
-  constructor() { }
+  constructor() {}
 
   feetToInches(feet: number): number {
     return feet * 12;
   }
 
   cmToInches(cm: number): number {
-    return cm * 0.39370;
+    return cm * 0.3937;
   }
 
   inchesToCentimetres(inches: number): number {
@@ -25,5 +24,13 @@ export class ConversionService {
 
   metresToInches(m: number): number {
     return +(m * 39.3701).toFixed(2);
+  }
+
+  inchesToFeet(inches: number): number {
+    return +(+inches / 12).toFixed(2);
+  }
+
+  feetToMiles(feet: number): number {
+    return +(feet / 0.000189394).toFixed(2);
   }
 }

@@ -7,6 +7,8 @@ import { CalculateDistanceService } from "../../calculate-distance.service";
 import { IonInput } from "@ionic/angular";
 import copyToClipboard from "../../utils/copy-to-clipboard";
 import { ToastService } from "src/app/toast.service";
+import toNumber from "lodash/toNumber";
+import { ConversionService } from "src/app/conversion.service";
 
 @Component({
   selector: "imperial-form",
@@ -16,10 +18,13 @@ import { ToastService } from "src/app/toast.service";
 export class ImperialFormComponent implements OnInit {
   @ViewChild("height", { static: false }) height: IonInput;
   imperialForm: FormGroup;
+  distanceInFeet: number;
+  distanceInMiles: number;
   constructor(
     public formBuilder: FormBuilder,
     public calculateDistance: CalculateDistanceService,
-    public toastService: ToastService
+    public toastService: ToastService,
+    public convert: ConversionService
   ) {
     this.imperialForm = this.formBuilder.group({
       feet: [
@@ -47,12 +52,38 @@ export class ImperialFormComponent implements OnInit {
   }
 
   getDistance(): number {
-    return +this.calculateDistance.enrightForumla(
-      this.imperialForm.controls.feet.value,
-      this.imperialForm.controls.lbs.value,
-      this.imperialForm.controls.age.value,
+    let heightInInches =
+      toNumber(
+        this.convert.feetToInches(this.imperialForm.controls.feet.value)
+      ) + toNumber(this.imperialForm.controls.inches.value);
+    let heightInCm = this.convert.inchesToCentimetres(heightInInches);
+    let weightKgs = this.convert.lbsToKg(this.imperialForm.controls.lbs.value);
+
+    let distanceInMetres = +this.calculateDistance.enrightForumla(
+      heightInCm,
+      weightKgs,
+      +this.imperialForm.controls.age.value,
       this.imperialForm.controls.gender.value
     );
+
+    let distanceInInches = this.convert.metresToInches(distanceInMetres);
+    this.distanceInFeet = this.convert.inchesToFeet(distanceInInches);
+    this.distanceInMiles = this.convert.feetToMiles(this.distanceInFeet);
+
+    return this.isResultAtLeastOneMile(this.distanceInFeet)
+      ? this.distanceInMiles
+      : this.distanceInFeet;
+  }
+
+  isResultAtLeastOneMile(feet: number): boolean {
+    const oneMile = 5280;
+    return feet >= oneMile;
+  }
+
+  displayResult(): string {
+    return this.isResultAtLeastOneMile(this.distanceInFeet)
+      ? `${this.distanceInMiles} miles`
+      : `${this.distanceInFeet} feet`;
   }
 
   onFormChange(): void {

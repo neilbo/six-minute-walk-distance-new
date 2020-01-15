@@ -92,9 +92,10 @@
   </ion-row>
 </form>
 <ion-row>
+  <!-- TODO :: Abstract into a ResultsComponent -->
   <ion-col size="12">
     <div *ngIf="showResults()" class="result-container">
-      <p class="result">{{getDistance() + "m"}}</p>
+      <p class="result">{{displayResult()}}</p>
 
       <div *ngIf="!isNegativeDistance()">
         <ion-button type="button" (click)="copyToClipboard(getDistance())"

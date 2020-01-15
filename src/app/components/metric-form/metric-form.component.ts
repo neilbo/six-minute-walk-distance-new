@@ -46,9 +46,13 @@ export class MetricFormComponent implements OnInit {
     return +this.calculateDistance.enrightForumla(
       this.metricForm.controls.cm.value,
       this.metricForm.controls.kg.value,
-      this.metricForm.controls.age.value,
+      +this.metricForm.controls.age.value,
       this.metricForm.controls.gender.value
     );
+  }
+
+  displayResult(): string {
+    return `${this.getDistance()}m`;
   }
 
   onFormChange(): void {
