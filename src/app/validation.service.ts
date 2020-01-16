@@ -13,7 +13,7 @@ export enum ValidationErrors {
   // INVALID_DAILY_OCCURRENCE = "medicineDailyOccurrence",
   // WHOLE_NUMBER = "wholeNumber",
   GREATER_THAN = "greaterThan",
-  // LESS_THAN = "lessThan",
+  LESS_THAN = "lessThan",
   // INVALID_SYSTOLIC = "invalidSystolic",
   // INVALID_DIASTOLIC = "invalidDiastolic",
   // INVALID_HEART_RATE = "invalidHeartRate",
@@ -41,7 +41,7 @@ export class ValidationService {
       // invalidDiastolic: `${fieldName} must be between ${DIASTOLIC_LOWER_LIMIT} and ${DIASTOLIC_UPPER_LIMIT}`,
       // invalidHeartRate: `${fieldName} must be between ${HEART_RATE_LOWER_LIMIT} and ${HEART_RATE_UPPER_LIMIT}`,
       greaterThan: `${fieldName} must be more than ${validatorValue}`,
-      // lessThan: `${fieldName} must be less than ${validatorValue}`
+      lessThan: `${fieldName} must be less than ${validatorValue}`
     };
 
     return config[validatorName];
@@ -116,6 +116,16 @@ export class ValidationService {
       }
 
       return { [ValidationErrors.GREATER_THAN]: limit };
+    };
+  }
+  
+  static isLessThan(limit: number): Validator {
+    return (control: AbstractControl) => {
+      if (control.value < limit) {
+        return null;
+      }
+
+      return { [ValidationErrors.LESS_THAN]: limit };
     };
   }
 }

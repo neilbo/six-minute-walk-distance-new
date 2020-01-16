@@ -33,7 +33,7 @@ export class ImperialFormComponent implements OnInit {
       ],
       inches: [
         "",
-        [ValidationService.isRequired, ValidationService.isGreaterThan(1)]
+        [ValidationService.isRequired, ValidationService.isGreaterThan(0), ValidationService.isLessThan(12)]
       ],
       lbs: [
         "",
