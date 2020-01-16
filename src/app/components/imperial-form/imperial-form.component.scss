@@ -1,26 +1,28 @@
 ion-item {
-    .item-native {
-      padding: 0;
+  .item-native {
+    padding: 0;
+  }
+}
+ion-label.label {
+  font-size: var(--font-size-label);
+}
+
+ion-input {
+  --background: var(--color-white);
+  border-radius: 4px;
+  padding: 0 4px !important;
+}
+.result-container {
+  text-align: center;
+  p {
+    margin: 4px 0;
+    &.result {
+      font-size: 2rem;
     }
   }
-  
-  ion-input {
-    --background: var(--color-white);
-    border-radius: 4px;
-    padding: 0 4px !important;
-  }
-  .result-container {
-    text-align: center;
-    p {
-      margin: 4px 0;
-      &.result {
-        font-size: 2rem;
-      }
-    }
-  }
-  
-  .empty-message {
-    text-align: center;
-    font-size: 1.4rem;
-  }
-  
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 1.4rem;
+}

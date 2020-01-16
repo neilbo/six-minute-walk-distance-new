@@ -7,9 +7,29 @@
       {{title}}
     </ion-title>
   </ion-toolbar>
+  <ion-toolbar class="sub-toolbar">
+    <ion-segment
+      mode="md"
+      [(ngModel)]="measurementType"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="metric" class="ion-text-uppercase" mode="md">
+        Metric
+      </ion-segment-button>
+      <ion-segment-button value="imperial" class="ion-text-uppercase" mode="md">
+        Imperial
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <metric-form></metric-form>
-  <imperial-form></imperial-form>
+  <ion-slides #measurementSlides (ionSlideDidChange)="onSlideChanged()">
+    <ion-slide>
+      <metric-form></metric-form>
+    </ion-slide>
+    <ion-slide>
+      <imperial-form></imperial-form>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

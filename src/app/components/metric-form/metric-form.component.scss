@@ -4,6 +4,10 @@ ion-item {
   }
 }
 
+ion-label.label {
+  font-size: var(--font-size-label);
+}
+
 ion-input {
   --background: var(--color-white);
   border-radius: 4px;

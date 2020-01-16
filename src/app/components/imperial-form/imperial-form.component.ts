@@ -48,7 +48,7 @@ export class ImperialFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.focusOnInput();
+    // this.focusOnInput();
   }
 
   getDistance(): number {

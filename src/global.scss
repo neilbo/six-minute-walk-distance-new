@@ -62,3 +62,22 @@ ion-toast {
   min-width: 250px !important;
   max-width: 250px !important;
 }
+
+// TODO :: why doesn't this work?
+// ion-toolbar .toolbar-background {
+//   background: var(--color-lite);
+// }
+
+ion-segment {
+  background: var(--color-white);
+}
+ion-segment-button {
+  --background: var(--color-white);
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--color-white);
+  --indicator-color-checked: var(--color-white);
+}
+
+ion-label.label {
+  font-size: 1.2rem;
+}
