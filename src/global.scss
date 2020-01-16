@@ -58,7 +58,7 @@ ion-toast {
   --color: var(--color-white);
 }
 
-.split-pane-visible >.split-pane-side {
+.split-pane-visible > .split-pane-side {
   min-width: 250px !important;
   max-width: 250px !important;
 }
@@ -68,14 +68,12 @@ ion-toast {
 //   background: var(--color-lite);
 // }
 
-ion-segment {
-  background: var(--color-white);
-}
 ion-segment-button {
+  --color: var(--ion-color-primary);
   --background: var(--color-white);
-  --background-checked: var(--ion-color-primary);
-  --color-checked: var(--color-white);
-  --indicator-color-checked: var(--color-white);
+  --background-hover: transparent;
+  --margin-end: 0;
+  --margin-start: 0;
 }
 
 ion-label.label {

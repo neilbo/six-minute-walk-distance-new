@@ -1,11 +1,14 @@
- <ion-grid>
-    <form [formGroup]="metricForm" (change)="onFormChange()">
-      <ion-row>
-        <ion-col size="12" size-md="8" offset-md="2">
+<form [formGroup]="metricForm" (change)="onFormChange()">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="10" offset-md="1" size-lg="10" offset-lg="1">
+        <ion-grid>
           <ion-row>
             <ion-col size="12" size-lg="4">
               <ion-item>
-                <ion-label position="stacked" class="label" >Height (cm)</ion-label>
+                <ion-label position="stacked" class="label"
+                  >Height (cm)</ion-label
+                >
                 <ion-input
                   type="text"
                   min="1"
@@ -22,7 +25,9 @@
             </ion-col>
             <ion-col size="12" size-lg="4">
               <ion-item>
-                <ion-label position="stacked" class="label" >Weight (kg)</ion-label>
+                <ion-label position="stacked" class="label"
+                  >Weight (kg)</ion-label
+                >
                 <ion-input
                   type="tel"
                   min="1"
@@ -38,7 +43,9 @@
             </ion-col>
             <ion-col size="12" size-lg="4">
               <ion-item>
-                <ion-label position="stacked" class="label" >Age (years)</ion-label>
+                <ion-label position="stacked" class="label"
+                  >Age (years)</ion-label
+                >
                 <ion-input
                   type="tel"
                   min="18"
@@ -53,7 +60,9 @@
               ></validation-error>
             </ion-col>
           </ion-row>
-          <ion-radio-group formControlName="gender">
+        </ion-grid>
+        <ion-radio-group formControlName="gender">
+          <ion-grid>
             <ion-row>
               <ion-col size="6">
                 <ion-item class="radio">
@@ -71,30 +80,32 @@
                 [control]="metricForm.controls.gender"
               ></validation-error>
             </ion-row>
-          </ion-radio-group>
-        </ion-col>
-      </ion-row>
-    </form>
-    <ion-row>
-      <!-- TODO :: Abstract into a ResultsComponent -->
-      <ion-col size="12">
-        <div *ngIf="showResults()" class="result-container">
-          <p class="result">{{displayResult()}}</p>
-
-          <div *ngIf="!isNegativeDistance()">
-            <ion-button type="button" (click)="copyToClipboard(getDistance())"
-              >Copy to Clipboard</ion-button
-            >
-          </div>
-
-          <p *ngIf="isNegativeDistance()">
-            Hmmm...this distance is negative, check the form for incorrect
-            values
-          </p>
-        </div>
-        <div *ngIf="!showResults()" class="empty-message">
-          Complete the form to see your predicted distance
-        </div>
+          </ion-grid>
+        </ion-radio-group>
       </ion-col>
     </ion-row>
   </ion-grid>
+</form>
+<ion-grid>
+  <ion-row>
+    <!-- TODO :: Abstract into a ResultsComponent -->
+    <ion-col size="12">
+      <div *ngIf="showResults()" class="result-container">
+        <p class="result">{{ displayResult() }}</p>
+
+        <div *ngIf="!isNegativeDistance()">
+          <ion-button type="button" (click)="copyToClipboard(getDistance())"
+            >Copy to Clipboard</ion-button
+          >
+        </div>
+
+        <p *ngIf="isNegativeDistance()">
+          Hmmm...this distance is negative, check the form for incorrect values
+        </p>
+      </div>
+      <div *ngIf="!showResults()" class="empty-message">
+        Complete the form to see your predicted distance
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
