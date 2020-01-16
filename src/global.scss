@@ -58,7 +58,24 @@ ion-toast {
   --color: var(--color-white);
 }
 
-.split-pane-visible >.split-pane-side {
+.split-pane-visible > .split-pane-side {
   min-width: 250px !important;
   max-width: 250px !important;
+}
+
+// TODO :: why doesn't this work?
+// ion-toolbar .toolbar-background {
+//   background: var(--color-lite);
+// }
+
+ion-segment-button {
+  --color: var(--ion-color-primary);
+  --background: var(--color-white);
+  --background-hover: transparent;
+  --margin-end: 0;
+  --margin-start: 0;
+}
+
+ion-label.label {
+  font-size: 1.2rem;
 }
