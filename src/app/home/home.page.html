@@ -23,13 +23,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [scrollEvents]="true">
   <ion-slides #measurementSlides (ionSlideDidChange)="onSlideChanged()">
     <ion-slide>
-      <metric-form></metric-form>
+      <ion-infinite-scroll>
+        <metric-form></metric-form>
+      </ion-infinite-scroll>
     </ion-slide>
     <ion-slide>
-      <imperial-form></imperial-form>
+      <ion-infinite-scroll>
+        <imperial-form></imperial-form>
+      </ion-infinite-scroll>
     </ion-slide>
   </ion-slides>
 </ion-content>

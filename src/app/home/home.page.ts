@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { IonSlides } from "@ionic/angular";
+import { IonSlides, IonContent } from "@ionic/angular";
 
 @Component({
   selector: "app-home",
@@ -9,6 +9,7 @@ import { IonSlides } from "@ionic/angular";
 export class HomePage implements OnInit {
   title: string = `Predicted Distance`;
   @ViewChild("measurementSlides", { static: false }) slides: IonSlides;
+  @ViewChild(IonContent, { static: false }) content: IonContent;
   measurementType: string = "metric";
   slideList: string[] = ["metric", "imperial"];
   activeIndex: number;
@@ -20,6 +21,7 @@ export class HomePage implements OnInit {
   async onSlideChanged(): Promise<void> {
     await this.getActiveIndex();
     this.measurementType = this.slideList[this.activeIndex];
+    this.content.scrollToTop();
   }
 
   async getActiveIndex(): Promise<void> {
@@ -33,5 +35,6 @@ export class HomePage implements OnInit {
 
   segmentChanged(segmentButton: CustomEvent): void {
     this.slides.slideTo(this.slideList.indexOf(segmentButton.detail.value));
+    this.content.scrollToTop();
   }
 }
