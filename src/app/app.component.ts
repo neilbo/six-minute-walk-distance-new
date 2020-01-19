@@ -12,9 +12,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Predicted Distance',
+      title: 'Welcome',
       url: '/home',
       icon: 'home'
+    },
+    {
+      title: 'Predicted Distance',
+      url: '/predicted-distance',
+      icon: 'calculator'
     },
   ];
 

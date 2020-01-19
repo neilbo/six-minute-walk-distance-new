@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar class="sub-toolbar">
+    <ion-segment
+      mode="ios"
+      [(ngModel)]="measurementType"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="metric" class="ion-text-uppercase" mode="ios">
+        Metric
+      </ion-segment-button>
+      <ion-segment-button value="imperial" class="ion-text-uppercase" mode="ios">
+        Imperial
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-slides #measurementSlides (ionSlideDidChange)="onSlideChanged()">
+    <ion-slide>
+      <ion-infinite-scroll>
+        <metric-form></metric-form>
+      </ion-infinite-scroll>
+    </ion-slide>
+    <ion-slide>
+      <ion-infinite-scroll>
+        <imperial-form></imperial-form>
+      </ion-infinite-scroll>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
