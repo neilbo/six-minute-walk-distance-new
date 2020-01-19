@@ -10,10 +10,19 @@
 </ion-header>
 
 <ion-content (ionSlideDidChange)="onSlideChanged()">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="next()">
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="back()">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-grid>
     <ion-row>
-      <ion-col
-      >
+      <ion-col>
         <ion-slides #welcomeSlides pager="true">
           <ion-slide *ngFor="let slide of slides">
             <div class="slide-content">
@@ -21,9 +30,12 @@
               <p class="title">
                 {{slide.title}}
               </p>
-              <p class="subTitle">
+              <p class="subTitle" [class.lastSlide]="activeIndex === 3">
                 {{slide.subTitle}}
               </p>
+              <ion-button (click)="getStarted()" *ngIf="activeIndex === 3"
+                >Get Started
+              </ion-button>
             </div>
           </ion-slide>
         </ion-slides>

@@ -23,11 +23,14 @@ ion-slide {
         padding: 0;
         margin: 8px 0;
       }
-      &.subTitle {
+      &.subTitle:not(.lastSlide) {
         color: var(--ion-color-primary);
         padding: 0;
         margin: 4px 0 40px 0;
       }
+    }
+    ion-button {
+        margin: 4px 0 40px 0;
     }
   }
 }
