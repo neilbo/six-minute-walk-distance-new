@@ -1,0 +1,33 @@
+ion-content {
+    --background: white;
+}
+ion-slides {
+  --bullet-background-active: var(--ion-color-primary);
+  --bullet-background: var(--ion-color-dark);
+  background: white;
+  margin: 8px;
+  border-radius: 4px;
+}
+
+ion-slide {
+  .slide-content {
+    flex-direction: column;
+    img {
+      max-height: 40vh;
+      margin-top: 16px;
+    }
+    p {
+      &.title {
+        color: black;
+        font-weight: 600;
+        padding: 0;
+        margin: 8px 0;
+      }
+      &.subTitle {
+        color: var(--ion-color-primary);
+        padding: 0;
+        margin: 4px 0 40px 0;
+      }
+    }
+  }
+}

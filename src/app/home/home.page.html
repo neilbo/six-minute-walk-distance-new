@@ -7,33 +7,27 @@
       {{title}}
     </ion-title>
   </ion-toolbar>
-  <ion-toolbar class="sub-toolbar">
-    <ion-segment
-      mode="ios"
-      [(ngModel)]="measurementType"
-      (ionChange)="segmentChanged($event)"
-    >
-      <ion-segment-button value="metric" class="ion-text-uppercase" mode="ios">
-        Metric
-      </ion-segment-button>
-      <ion-segment-button value="imperial" class="ion-text-uppercase" mode="ios">
-        Imperial
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content [scrollEvents]="true">
-  <ion-slides #measurementSlides (ionSlideDidChange)="onSlideChanged()">
-    <ion-slide>
-      <ion-infinite-scroll>
-        <metric-form></metric-form>
-      </ion-infinite-scroll>
-    </ion-slide>
-    <ion-slide>
-      <ion-infinite-scroll>
-        <imperial-form></imperial-form>
-      </ion-infinite-scroll>
-    </ion-slide>
-  </ion-slides>
+<ion-content (ionSlideDidChange)="onSlideChanged()">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+      >
+        <ion-slides #welcomeSlides pager="true">
+          <ion-slide *ngFor="let slide of slides">
+            <div class="slide-content">
+              <img [src]="slide.img" />
+              <p class="title">
+                {{slide.title}}
+              </p>
+              <p class="subTitle">
+                {{slide.subTitle}}
+              </p>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
