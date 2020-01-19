@@ -21,6 +21,11 @@ export class AppComponent {
       url: '/predicted-distance',
       icon: 'calculator'
     },
+    {
+      title: 'About',
+      url: '/about',
+      icon: 'information-circle'
+    },
   ];
 
   constructor(

@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'predicted-distance',
     loadChildren: () => import('./predicted-distance/predicted-distance.module').then( m => m.PredictedDistancePageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   }
 ];
 
