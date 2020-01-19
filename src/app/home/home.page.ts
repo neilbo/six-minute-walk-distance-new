@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -10,7 +11,7 @@ export class HomePage implements OnInit {
   title: string = `Welcome`;
   @ViewChild("welcomeSlides", { static: false }) welcomeSlides: IonSlides;
   activeIndex: number;
-  constructor() {}
+  constructor(public router: Router) {}
   slides: any = [
     {
       img: `/assets/img/slide--6mwd.png`,
@@ -33,7 +34,7 @@ export class HomePage implements OnInit {
       img: `/assets/img/slide--metric-imperial.png`,
       title: `Centimetres and Feet-Inch friendly`,
       subTitle: `Whether you use the Metric or Imperial system. We've got you covered.`
-    },
+    }
   ];
   ngOnInit() {}
 
@@ -49,5 +50,14 @@ export class HomePage implements OnInit {
         return index;
       });
     this.activeIndex = activeIndex;
+  }
+  getStarted() {
+    this.router.navigateByUrl("/predicted-distance");
+  }
+  next() {
+    this.welcomeSlides.slideNext();
+  }
+  back() {
+    this.welcomeSlides.slidePrev();
   }
 }
