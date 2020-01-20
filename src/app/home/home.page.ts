@@ -25,15 +25,15 @@ export class HomePage implements OnInit {
       tests (6MWT) for Cardiac or Pulmonary Rehabilitation .`
     },
     {
+      img: `/assets/img/slide--metric-imperial.png`,
+      title: `Centimetres and Feet-Inch friendly`,
+      subTitle: `Whether you use the Metric or Imperial system. We've got you covered.`
+    },
+    {
       img: `/assets/img/slide--easy-calculation.png`,
       title: `Easy calculation`,
       subTitle: `Just add height, weight, age and gender then copy the predicted
       distance to your clipboard`
-    },
-    {
-      img: `/assets/img/slide--metric-imperial.png`,
-      title: `Centimetres and Feet-Inch friendly`,
-      subTitle: `Whether you use the Metric or Imperial system. We've got you covered.`
     }
   ];
   ngOnInit() {}
