@@ -11,6 +11,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
+  // Might not work with Hash routing enabled
   // {
   //   path: '',
   //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
