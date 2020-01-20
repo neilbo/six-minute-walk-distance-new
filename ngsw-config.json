@@ -3,7 +3,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "6MWD",
+      "name": "app",
       "installMode": "prefetch",
       "resources": {
         "files": [
