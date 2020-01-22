@@ -1,6 +1,6 @@
 {
-  "name": "6MWD",
-  "short_name": "6MWD",
+  "name": "app",
+  "short_name": "app",
   "theme_color": "#000000",
   "background_color": "#f4f4f4",
   "display": "standalone",
