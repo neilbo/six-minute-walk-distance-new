@@ -15,22 +15,26 @@ export class HomePage implements OnInit {
   slides: any = [
     {
       img: `/assets/img/slide--6mwd.png`,
+      alt: `Woman having blood pressure monitor`,
       title: `6MWD`,
       subTitle: `Predicted Distance calculator for Clinicians built by a Clinician.`
     },
     {
       img: `/assets/img/slide--who-is-this-for.png`,
+      alt: `Anatomy models of Heart and Lungs`,
       title: `Who is 6MWD for?`,
       subTitle: `You do a lot of six minute walk
       tests (6MWT) for Cardiac or Pulmonary Rehabilitation .`
     },
     {
       img: `/assets/img/slide--metric-imperial.png`,
+      alt: `3 differnt types of rulers`,
       title: `Centimetres and Feet-Inch friendly`,
       subTitle: `Whether you use the Metric or Imperial system. We've got you covered.`
     },
     {
       img: `/assets/img/slide--easy-calculation.png`,
+      alt: `person sitting while using laptop computer and green stethoscope near`,
       title: `Easy calculation`,
       subTitle: `Just add height, weight, age and gender then copy the predicted
       distance to your clipboard`

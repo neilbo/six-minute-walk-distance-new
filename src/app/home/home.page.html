@@ -26,7 +26,7 @@
         <ion-slides #welcomeSlides pager="true">
           <ion-slide *ngFor="let slide of slides">
             <div class="slide-content">
-              <img [src]="slide.img" />
+              <img [src]="slide.img" [alt]="slide.alt"/>
               <p class="title">
                 {{slide.title}}
               </p>
