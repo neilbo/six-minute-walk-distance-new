@@ -55,13 +55,16 @@ export class HomePage implements OnInit {
       });
     this.activeIndex = activeIndex;
   }
-  getStarted() {
+
+  getStarted(): void {
     this.router.navigateByUrl("/predicted-distance");
   }
-  next() {
+
+  next(): void {
     this.welcomeSlides.slideNext();
   }
-  back() {
+
+  back(): void {
     this.welcomeSlides.slidePrev();
   }
 }

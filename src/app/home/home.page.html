@@ -10,33 +10,35 @@
 </ion-header>
 
 <ion-content (ionSlideDidChange)="onSlideChanged()">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="next()">
-      <ion-icon name="arrow-dropright"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button (click)="back()">
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-slides #welcomeSlides pager="true">
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="next()">
+              <ion-icon name="arrow-dropright"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+          <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+            <ion-fab-button (click)="back()">
+              <ion-icon name="arrow-dropleft"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
           <ion-slide *ngFor="let slide of slides">
-            <div class="slide-content">
-              <img [src]="slide.img" [alt]="slide.alt"/>
-              <p class="title">
-                {{slide.title}}
-              </p>
-              <p class="subTitle" [class.lastSlide]="activeIndex === 3">
-                {{slide.subTitle}}
-              </p>
+            <ion-infinite-scroll>
+              <div class="slide-content">
+                <img [src]="slide.img" [alt]="slide.alt" />
+                <p class="title">
+                  {{slide.title}}
+                </p>
+                <p class="subTitle" [class.lastSlide]="activeIndex === 3">
+                  {{slide.subTitle}}
+                </p>
+              </div>
               <ion-button (click)="getStarted()" *ngIf="activeIndex === 3"
                 >Get Started
               </ion-button>
-            </div>
+            </ion-infinite-scroll>
           </ion-slide>
         </ion-slides>
       </ion-col>
