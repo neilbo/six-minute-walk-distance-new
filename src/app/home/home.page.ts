@@ -40,11 +40,25 @@ export class HomePage implements OnInit {
       distance to your clipboard`
     }
   ];
+  atBeginning: boolean;
   ngOnInit() {}
 
-  async onSlideChanged(): Promise<void> {
+  async ngAfterViewInit() {
     await this.getActiveIndex();
-    console.log(this.getActiveIndex());
+    if (this.activeIndex === 0) {
+      this.atBeginning = true;
+    } else {
+      this.atBeginning = false;
+    }
+  }
+
+  async onSlideChanged() {
+    await this.getActiveIndex();
+    if (this.activeIndex === 0) {
+      this.atBeginning = true;
+    } else {
+      this.atBeginning = false;
+    }
   }
 
   async getActiveIndex(): Promise<void> {
@@ -61,7 +75,11 @@ export class HomePage implements OnInit {
   }
 
   next(): void {
-    this.welcomeSlides.slideNext();
+    if (this.activeIndex === 3) {
+      this.getStarted();
+    } else {
+      this.welcomeSlides.slideNext();
+    }
   }
 
   back(): void {
