@@ -16,12 +16,12 @@
         <ion-slides #welcomeSlides pager="true">
           <ion-fab vertical="bottom" horizontal="end" slot="fixed">
             <ion-fab-button (click)="next()">
-              <ion-icon name="arrow-dropright"></ion-icon>
+              <ion-icon name="arrow-forward-circle-outline"></ion-icon>
             </ion-fab-button>
           </ion-fab>
           <ion-fab vertical="bottom" horizontal="start" slot="fixed">
             <ion-fab-button (click)="back()" [disabled]="atBeginning">
-              <ion-icon name="arrow-dropleft"></ion-icon>
+              <ion-icon name="arrow-back-circle-outline"></ion-icon>
             </ion-fab-button>
           </ion-fab>
           <ion-slide *ngFor="let slide of slides">
